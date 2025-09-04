@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boilerplate with CSS</title>
+    <!--
+      This link tag imports the CSS from a separate file named first.css.
+      This is the standard and recommended way to include external stylesheets.
+    -->
+    <link rel="stylesheet" href="first.css">
+    </head>
+    <body>
+    <div class="container">
+        <header class="main-header">
+            <h1>CSS Flexbox and Grid Systems Tutorial</h1>
+            <p>Learn the fundamentals of modern CSS layout with practical examples</p>
+        </header>
+                <!-- FLEXBOX SECTION -->
+        <section class="section">
+            <h2>CSS Flexbox Examples</h2>
+            
+            <!-- Flexbox Example 1: Basic Horizontal Layout -->
+            <div class="example">
+                <h3>Example 1: Basic Horizontal Layout</h3>
+                <p><strong>Properties:</strong> display: flex, justify-content: space-between</p>
+                <div class="flex-container flex-example-1">
+                    <div class="flex-item item-1">Item 1</div>
+                    <div class="flex-item item-2">Item 2</div>
+                    <div class="flex-item item-3">Item 3</div>
+                </div>
+            </div>
+
+            <!-- Flexbox Example 2: Vertical Centering -->
+            <div class="example">
+                <h3>Example 2: Perfect Centering</h3>
+                <p><strong>Properties:</strong> display: flex, justify-content: center, align-items: center</p>
+                <div class="flex-container flex-example-2">
+                    <div class="flex-item centered-item">Perfectly Centered</div>
+                </div>
+            </div>
+
+            <!-- Flexbox Example 3: Navigation Bar -->
+            <div class="example">
+                <h3>Example 3: Navigation Bar</h3>
+                <p><strong>Properties:</strong> display: flex, justify-content: space-around, align-items: center</p>
+                <nav class="flex-container flex-example-3">
+                    <div class="nav-item">Home</div>
+                    <div class="nav-item">About</div>
+                    <div class="nav-item">Services</div>
+                    <div class="nav-item">Contact</div>
+                </nav>
+            </div>
+
+            <!-- Flexbox Example 4: Flexible Card Layout -->
+            <div class="example">
+                <h3>Example 4: Flexible Cards</h3>
+                <p><strong>Properties:</strong> display: flex, flex-wrap: wrap, flex: 1</p>
+                <div class="flex-container flex-example-4">
+                    <div class="card card-1">
+                        <h4>Card 1</h4>
+                        <p>This card adjusts its width based on available space.</p>
+                    </div>
+                    <div class="card card-2">
+                        <h4>Card 2</h4>
+                        <p>Flexbox makes responsive design easy and intuitive.</p>
+                    </div>
+                    <div class="card card-3">
+                        <h4>Card 3</h4>
+                        <p>All cards maintain equal height automatically.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flexbox Example 5: Column Layout with Different Alignments -->
+            <div class="example">
+                <h3>Example 5: Column Layout</h3>
+                <p><strong>Properties:</strong> flex-direction: column, align-items: flex-start/center/flex-end</p>
+                <div class="flex-container flex-example-5">
+                    <div class="column-item item-left">Left Aligned</div>
+                    <div class="column-item item-center">Center Aligned</div>
+                    <div class="column-item item-right">Right Aligned</div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2>CSS Grid Examples</h2>
+            
+            <!-- Grid Example 1: Basic Grid Layout -->
+            <div class="example">
+                <h3>Example 1: Basic 3x3 Grid</h3>
+                <p><strong>Properties:</strong> display: grid, grid-template-columns: repeat(3, 1fr), gap: 10px</p>
+                <div class="grid-container grid-example-1">
+                    <div class="grid-item grid-item-1">1</div>
+                    <div class="grid-item grid-item-2">2</div>
+                    <div class="grid-item grid-item-3">3</div>
+                    <div class="grid-item grid-item-4">4</div>
+                    <div class="grid-item grid-item-5">5</div>
+                    <div class="grid-item grid-item-6">6</div>
+                    <div class="grid-item grid-item-7">7</div>
+                    <div class="grid-item grid-item-8">8</div>
+                    <div class="grid-item grid-item-9">9</div>
+                    <div class="grid-item grid-item-10">10</div>
+                </div>
+            </div>
+
+            <!-- Grid Example 2: Website Layout -->
+            <div class="example">
+                <h3>Example 2: Website Layout</h3>
+                <p><strong>Properties:</strong> grid-template-areas, grid-area</p>
+                <div class="grid-container grid-example-2">
+                    <header class="grid-header">Header</header>
+                    <nav class="grid-nav">Navigation</nav>
+                    <main class="grid-main">Main Content</main>
+                    <aside class="grid-sidebar">Sidebar</aside>
+                    <footer class="grid-footer">Footer</footer>
+                </div>
+            </div>
+        </section>
+</div>
+</body>
+</html>

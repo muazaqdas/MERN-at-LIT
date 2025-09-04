@@ -1,0 +1,364 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styles */
+.main-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px;
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: white;
+    border-radius: 10px;
+}
+
+.main-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.main-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Section Styles */
+.section {
+    margin-bottom: 50px;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    text-align: center;
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, #ff6b6b, #ee5a24);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+/* Example Container Styles */
+.example {
+    margin-bottom: 40px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #3498db;
+}
+
+.example h3 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.example p {
+    margin-bottom: 20px;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* ===========================================
+   FLEXBOX EXAMPLES
+   =========================================== */
+
+/* Common Flexbox Styles */
+.flex-container {
+    border: 2px dashed #3498db;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(52, 152, 219, 0.05);
+}
+
+.flex-item {
+    padding: 15px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    min-width: 100px;
+}
+
+/* Flexbox Example 1: Basic Horizontal Layout */
+.flex-example-1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 80px;
+}
+
+.flex-example-1 .item-1 {
+    background: linear-gradient(45deg, #ff6b6b, #ff5252);
+}
+
+.flex-example-1 .item-2 {
+    background: linear-gradient(45deg, #4ecdc4, #26d0ce);
+}
+
+.flex-example-1 .item-3 {
+    background: linear-gradient(45deg, #45b7d1, #3498db);
+}
+
+/* Flexbox Example 2: Perfect Centering */
+.flex-example-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 150px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.centered-item {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    padding: 25px 40px;
+    font-size: 1.2rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Flexbox Example 3: Navigation Bar */
+.flex-example-3 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+    border-radius: 50px;
+    padding: 10px 20px;
+    min-height: 60px;
+}
+
+.nav-item {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(45deg, #2980b9, teal);
+}
+
+
+
+/* Flexbox Example 4: Flexible Cards */
+.flex-example-4 {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    gap: 20px;
+}
+
+.card {
+    flex: 1;
+    min-width: 250px;
+    padding: 25px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-1 {
+    background: linear-gradient(135deg, #ff9a9e, #fecfef);
+    color: #333;
+}
+
+.card-2 {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    color: #333;
+}
+
+.card-3 {
+    background: linear-gradient(135deg, #d299c2, #fef9d7);
+    color: #333;
+}
+
+.card h4 {
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+
+
+/* Flexbox Example 5: Column Layout */
+.flex-example-5 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* min-height: 500px; */
+    background: linear-gradient(135deg, #ffecd2, #fcb69f);
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.column-item {
+    padding: 15px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    width: fit-content;
+}
+
+.item-left {
+    /* align-self: flex-start; */
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+}
+
+.item-center {
+    /* align-self: center; */
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+}
+
+.item-right {
+    /* align-self: flex-end; */
+    background: linear-gradient(45deg, #45b7d1, #96c93d);
+}
+
+
+/* Common Grid Styles */
+.grid-container {
+    border: 2px dashed #e74c3c;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 8px;
+    background: rgba(231, 76, 60, 0.05);
+}
+
+.grid-item {
+    background: linear-gradient(45deg, #e74c3c, #c0392b);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+/* Grid Example 1: Basic 3x3 Grid */
+.grid-example-1 {
+    display: grid;
+    grid-template-columns: 200px 1fr 50px;
+    grid-template-rows: 200px 200px 200px 200px;
+    gap: 10px;
+}
+
+.grid-item-1 { background: linear-gradient(45deg, #ff6b6b, #ee5a24); }
+.grid-item-2 { background: linear-gradient(45deg, #4ecdc4, #44a08d); }
+.grid-item-3 { background: linear-gradient(45deg, #45b7d1, #96c93d); }
+.grid-item-4 { background: linear-gradient(45deg, #f093fb, #f5576c); }
+.grid-item-5 { background: linear-gradient(45deg, #4facfe, #00f2fe); }
+.grid-item-6 { background: linear-gradient(45deg, #43e97b, #38f9d7); }
+.grid-item-7 { background: linear-gradient(45deg, #fa709a, #fee140); }
+.grid-item-8 { background: linear-gradient(45deg, #a8edea, #fed6e3); }
+.grid-item-9 { background: linear-gradient(45deg, #ffecd2, #fcb69f); }
+.grid-item-10 { background: linear-gradient(45deg, #ffecd2, #fcb69f); }
+
+
+
+
+/* Grid Example 2: Website Layout */
+.grid-example-2 {
+    display: grid;
+    grid-template-columns: 200px 1fr 150px;
+    grid-template-rows: 60px 1fr 20px;
+    grid-template-areas: 
+        "header header header"
+        "nav main sidebar"
+        "footer footer footer";
+    gap: 15px;
+    /* row-gap: 12px;
+    column-gap: 2px; */
+    min-height: 400px;
+}
+
+.grid-header {
+    grid-area: header;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.grid-nav {
+    grid-area: nav;
+    background: linear-gradient(45deg, #f093fb, #f5576c);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.grid-main {
+    grid-area: main;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.grid-sidebar {
+    grid-area: sidebar;
+    background: linear-gradient(45deg, #43e97b, #38f9d7);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.grid-footer {
+    grid-area: footer;
+    background: linear-gradient(45deg, #fa709a, #fee140);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
