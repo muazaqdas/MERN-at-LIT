@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class 4: CSS Advanced Styling Examples</title>
+    <link rel="stylesheet" href="class4-styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>CSS Advanced Styling Examples</h1>
+        <nav class="main-nav">
+            <a href="#selectors">Selectors</a>
+            <a href="#positioning">Positioning</a>
+            <a href="#transforms">Transforms</a>
+            <a href="#animations">Animations</a>
+            <a href="#responsive">Responsive</a>
+        </nav>
+    </header>
+
+    <!-- CSS Variables and Functions Demo -->
+    <section id="variables" class="demo-section">
+        <h2>CSS Variables & Functions</h2>
+        <div class="variable-demo">
+            <div class="calc-box">Using calc()</div>
+            <div class="clamp-text">Responsive text with clamp()</div>
+            <div class="min-max-box">Using min() and max()</div>
+        </div>
+    </section>
+
+    <!-- Advanced Selectors Demo -->
+    <section id="selectors" class="demo-section">
+        <h2>Advanced Selectors</h2>
+        
+        <!-- Attribute Selectors -->
+        <div class="selector-demo">
+            <h3>Attribute Selectors</h3>
+            <input type="email" placeholder="Email input">
+            <input type="text" placeholder="Text input">
+            <a href="https://example.com" target="_blank">External Link</a>
+            <a href="#internal">Internal Link</a>
+        </div>
+
+        <!-- Pseudo-classes -->
+        <div class="selector-demo">
+            <h3>Pseudo-classes</h3>
+            <ul class="pseudo-list">
+                <li>First item</li>
+                <li>Second item</li>
+                <li>Third item</li>
+                <li>Fourth item</li>
+                <li>Fifth item</li>
+            </ul>
+            <button class="focus-demo">Focus me with Tab</button>
+        </div>
+
+        <!-- Pseudo-elements -->
+        <div class="selector-demo">
+            <h3>Pseudo-elements</h3>
+            <p class="first-letter-demo">This paragraph demonstrates the ::first-letter pseudo-element styling.</p>
+            <div class="before-after-demo">Content with ::before and ::after</div>
+        </div>
+
+        <!-- Combinators -->
+        <div class="selector-demo">
+            <h3>Combinators</h3>
+            <div class="parent">
+                <p>Direct child paragraph</p>
+                <div class="nested">
+                    <p>Nested paragraph</p>
+                </div>
+                <p>Another direct child</p>
+                <span>Adjacent sibling</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Positioning Demo -->
+    <section id="positioning" class="demo-section">
+        <h2>CSS Positioning</h2>
+        
+        <div class="positioning-container">
+            <div class="static-demo">Static (default)</div>
+            <div class="relative-demo">Relative positioned</div>
+            <div class="absolute-demo">Absolute positioned</div>
+            <div class="fixed-demo">Fixed positioned</div>
+        </div>
+
+        <!-- Sticky positioning -->
+       <!-- Our navbar is an example of sticky header -->
+
+        <!-- Z-index demonstration -->
+        <div class="z-index-demo">
+            <div class="z-layer z-1">Z-index: 1</div>
+            <div class="z-layer z-3">Z-index: 3</div>
+            <div class="z-layer z-2">Z-index: 2</div>
+        </div>
+    </section>
+
+    <!-- Transforms Demo -->
+    <section id="transforms" class="demo-section">
+        <h2>CSS Transforms</h2>
+        
+        <div class="transform-grid">
+            <div class="transform-item translate-demo">Translate</div>
+            <div class="transform-item rotate-demo">Rotate</div>
+            <div class="transform-item scale-demo">Scale</div>
+            <div class="transform-item skew-demo">Skew</div>
+            <div class="transform-item combine-demo">Combined</div>
+            <div class="transform-item origin-demo">Origin Point</div>
+        </div>
+    </section>
+
+    <!-- Animations and Transitions Demo -->
+    <section id="animations" class="demo-section">
+        <h2>Animations & Transitions</h2>
+        
+        <!-- Transitions -->
+        <div class="animation-demo">
+            <h3>Transitions</h3>
+            <button class="transition-btn">Hover for transition</button>
+            <div class="transition-box">Hover me</div>
+        </div>
+
+        <!-- Keyframe Animations -->
+        <div class="animation-demo">
+            <h3>Keyframe Animations</h3>
+            <div class="loading-spinner"></div>
+            <div class="bounce-ball"></div>
+            <div class="fade-in-out">Fade animation</div>
+            <div class="slide-animation">Slide animation</div>
+        </div>
+
+        <!-- Timing Functions -->
+        <div class="animation-demo">
+            <h3>Timing Functions</h3>
+            <div class="timing-container">
+                <div class="timing-box ease">ease</div>
+                <div class="timing-box linear">linear</div>
+                <div class="timing-box ease-in">ease-in</div>
+                <div class="timing-box ease-out">ease-out</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Responsive Design Demo -->
+    <section id="responsive" class="demo-section">
+        <h2>Responsive Design</h2>
+        
+        <!-- Responsive Grid -->
+        <div class="responsive-grid">
+            <div class="grid-item">Item 1</div>
+            <div class="grid-item">Item 2</div>
+            <div class="grid-item">Item 3</div>
+            <div class="grid-item">Item 4</div>
+            <div class="grid-item">Item 5</div>
+            <div class="grid-item">Item 6</div>
+        </div>
+
+        <!-- Responsive Typography -->
+        <div class="responsive-text">
+            <h3>Responsive Typography</h3>
+            <p class="fluid-text">This text scales with viewport size using clamp()</p>
+        </div>
+
+        <!-- Responsive Units Demo -->
+        <div class="units-demo">
+            <div class="vw-box">50vw width</div>
+            <div class="vh-box">30vh height</div>
+            <div class="vmin-box">20vmin</div>
+        </div>
+    </section>
+
+    <!-- Interactive Components -->
+    <section class="demo-section">
+        <h2>Interactive Components</h2>
+        
+        <!-- Modal Demo -->
+        <button class="modal-trigger">Open Modal</button>
+        <div class="modal-overlay" id="modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <h3>Modal Example</h3>
+                <p>This is a modal dialog with proper positioning and animations.</p>
+            </div>
+        </div>
+
+        <!-- Card Hover Effects -->
+        <div class="card-container">
+            <div class="hover-card">
+                <h4>Hover Card 1</h4>
+                <p>Hover to see transform effect</p>
+            </div>
+            <div class="hover-card flip-card">
+                <h4>Flip Card</h4>
+                <p>Hover to flip</p>
+            </div>
+            <div class="hover-card glow-card">
+                <h4>Glow Card</h4>
+                <p>Hover for glow effect</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="demo-footer">
+        <p>Resize your browser window to see responsive behavior</p>
+    </footer>
+
+    <script>
+        // Modal functionality
+        const modalTrigger = document.querySelector('.modal-trigger');
+        const modal = document.getElementById('modal');
+        const modalClose = document.querySelector('.modal-close');
+
+        modalTrigger.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
