@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    columns: #333;
+    /* background: rgb(rgb(162, 95, 95), rgb(23, 174, 23), rgb(22, 22, 191)); */
+    background: linear-gradient(90deg, #667eea, #764ba2, 100%);
+    min-height: 100vh;
+    padding: 20px;
+    
+}
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+
+}
