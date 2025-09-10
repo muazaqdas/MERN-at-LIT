@@ -1,0 +1,128 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.title{
+    font-size: 2.5rem;
+    color: teal;
+}
+.subtitle{
+    font-size: 1.3rem;
+    color: green;
+}
+.text{
+    font-size: 0.8rem;
+    color: #1e1e1e;
+}
+
+
+header{
+position: sticky;
+top: 0;
+z-index: 100;
+}
+nav {
+    /* position: sticky; */
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 2rem;
+    color: #fff;
+}
+.logo{
+    font-size: 2rem;
+}
+.navbar-links{
+    display: flex;
+    flex-direction: row;
+    gap:22px
+}
+.nav-links{
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-links:hover{
+    opacity: 0.6;
+}
+
+.sections{
+    min-height: 100vh;
+}
+.flex-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:20px;
+    padding: 3rem;
+}
+.home-section{
+    height: 100vh;
+    background: linear-gradient(100deg, rgba(0,0,0,0.4) , rgba(0,0,0,0.4)), url("https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80");
+    background-position: center;
+    color: #fff;
+    display: flex;
+}
+.home-section button{
+    background-color: teal;
+    padding: 12px 22px;
+    color: #fff;
+    border-radius: 22px;
+    border: none;
+}
+
+.sticky-class{
+    background-color: red;
+    min-height: 100px;
+    position: sticky;
+    top: 0;
+}
+#about p{
+    text-align: center;
+}
+.product-container{
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.product-container .product-card{
+    width: calc(50% - 0.5rem);
+    display: flex;
+    flex-direction: column;
+    gap:1rem;
+}
+.product-container .product-card .image{
+    background-image: url(https://images.unsplash.com/photo-1589924691995-400dc9ecc119?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80);
+    height: 12rem;
+    width: 100%;
+    border-radius: 22px;
+}
+.product-container .product-card .details{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+    padding: 0 2rem;
+}
+.product-container .product-card .details .cost{
+    color: red;
+}
+.service-container .service-card{
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 1.5rem;
+    border-radius: 22px;
+
+}
+#contact{
+    background-color: greenyellow;
+}
