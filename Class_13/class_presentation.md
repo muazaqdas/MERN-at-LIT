@@ -246,9 +246,9 @@ function Counter() {
     const [count, setCount] = useState(0);
 
     function incrementThreeTimes() {
-        setCount(prev => prev + 1);  // prev = 0, returns 1
-        setCount(prev => prev + 1);  // prev = 1, returns 2
-        setCount(prev => prev + 1);  // prev = 2, returns 3
+        setCount((prev) => prev + 1);  // prev = 0, returns 1
+        setCount((prev) => prev + 1);  // prev = 1, returns 2
+        setCount((prev) => prev + 1);  // prev = 2, returns 3
         // Result: count = 3 ✓
     }
 

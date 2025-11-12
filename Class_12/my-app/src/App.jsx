@@ -1,16 +1,54 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css'
-import Name from './Name';
+// import Name from './Name';
+import Product from './Product';
 
 import TodoList from './TodoList'
+import Navbar from './Navbar';
 
 function App() {
+  
+
+  // useEffect to change title on initial render:
+
+  useEffect(
+    ()=>{
+      document.title = "Hello Vishal";
+      console.log("Heelo New ppl");
+    }, []
+  );
+
+  // count state variable, and useEffect to update count in every 1 second until the App is umount.
+
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+        document.title = `Count: ${count}`;
+    }, [count]);
+
+  useEffect(() => {
+        // Set up timer
+        const interval  = setInterval(() => {
+            setCount((prev) => prev + 1);
+        }, 1000);
+
+        // Cleanup function
+        return () => {
+            clearInterval(interval);  
+            console.log("This is the end") // Clear timer when component unmounts
+        };
+    }, []);  
+
+   
+
   return (
     <>
        {/* 11 Nov */}
         {/* <Name/> */}
-        <TodoList/>
+        <Navbar/>
+        <button onClick={() => setCount(count + 1)}>+1</button>
+        
+
     </>
   )
 }

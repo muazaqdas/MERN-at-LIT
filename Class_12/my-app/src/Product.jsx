@@ -1,13 +1,8 @@
 import React, { useState } from 'react'
 
 
-export function sum(a, b){
-  console.log('hululu', a+b);
-}
-
 const  Product = (props) => {
   
-
   const [quant, setQuant]  =  useState(0);
 
   const handleIncrement = ()=>{
