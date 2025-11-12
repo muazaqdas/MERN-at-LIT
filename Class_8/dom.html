@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Class Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .section {
+            padding: 30px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        .section h2 {
+            color: #333;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4facfe;
+            display: inline-block;
+        }
+        
+        .demo-area {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 100px;
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+            color: white;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            color: white;
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .form-group {
+            margin: 15px 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #e1e5e9;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .card-title {
+            color: #333;
+            margin: 0;
+        }
+        
+        .badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-active { background: #28a745; color: white; }
+        .status-pending { background: #ffc107; color: #212529; }
+        .status-completed { background: #17a2b8; color: white; }
+        
+        .list-item {
+            background: white;
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .list-item:hover {
+            background: #f8f9fa;
+            border-color: #4facfe;
+        }
+        
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .remove-btn:hover {
+            background: #c82333;
+            transform: scale(1.1);
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .error {
+            border-color: #dc3545 !important;
+            background: #fff5f5;
+        }
+        
+        .valid {
+            border-color: #28a745 !important;
+            background: #f8fff8;
+        }
+        
+        .deleting {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.3s ease;
+        }
+        
+        #output {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 20px 0;
+            border: 2px solid #333;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .code-example {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.4;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 DOM Manipulation Demo</h1>
+            <p>Interactive examples for Class 8</p>
+        </div>
+
+        <!-- Section 1: Element Selection -->
+        <div class="section">
+            <h2>1. Element Selection Demo</h2>
+            <p>Try different selection methods to find elements on this page.</p>
+            
+            <div class="demo-area" id="selection-demo">
+                <div id="unique-element" class="sample-element">Element with ID</div>
+                <div class="sample-element highlight">Element with class</div>
+                <p class="sample-element">Paragraph element</p>
+                <span class="sample-element special">Special span</span>
+                <div class="sample-element" data-value="123">Element with data attribute</div>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-primary" onclick="demonstrateSelection()">Test All Selection Methods</button>
+                <button class="btn btn-warning" onclick="clearOutput()">Clear Output</button>
+            </div>
+
+            <div class="code-example">
+            <!-- // Example selection methods:
+            const byId = document.getElementById('unique-element');
+            const byClass = document.getElementsByClassName('sample-element');
+            const byQuery = document.querySelector('.special');
+            const byQueryAll = document.querySelectorAll('.sample-element'); -->
+            </div>
+
+            <div id="output"></div>
+        </div>
+
+        <!-- Section 2: Content and Attribute Manipulation -->
+        <div class="section">
+            <h2>2. Content & Attribute Manipulation</h2>
+            
+            <div class="demo-area">
+                <div id="content-demo" class="card">
+                    <h3 id="demo-title">Original Title</h3>
+                    <p id="demo-content">Original content goes here.</p>
+                    <img id="demo-image" src="https://via.placeholder.com/150x100" alt="Demo image" width="150">
+                    <div class="form-group">
+                        <input type="text" id="demo-input" placeholder="Type something..." value="Initial value">
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="form-group">
+                        <label>Change Title:</label>
+                        <input type="text" id="new-title" placeholder="New title">
+                        <button class="btn btn-primary" onclick="changeTitle()">Update Title</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Change Content:</label>
+                        <textarea id="new-content" placeholder="New content"></textarea>
+                        <button class="btn btn-success" onclick="changeContent()">Update Content</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Image Source:</label>
+                        <input type="text" id="new-image-src" placeholder="Image URL">
+                        <button class="btn btn-warning" onclick="changeImage()">Change Image</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Add/Remove Classes:</label>
+                        <button class="btn btn-primary" onclick="toggleHighlight()">Toggle Highlight</button>
+                        <button class="btn btn-danger" onclick="addErrorClass()">Add Error Style</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Creating and Removing Elements -->
+        <div class="section">
+            <h2>3. Creating & Removing Elements</h2>
+            
+            <div class="demo-area" id="dynamic-content">
+                <p>Dynamic elements will appear here...</p>
+            </div>
+
+            <div class="grid">
+                <div>
+                    <div class="form-group">
+                        <label>Create Element:</label>
+                        <select id="element-type">
+                            <option value="div">Div</option>
+                            <option value="p">Paragraph</option>
+                            <option value="button">Button</option>
+                            <option value="input">Input</option>
+                        </select>
+                        <input type="text" id="element-text" placeholder="Element content">
+                        <button class="btn btn-success" onclick="createElement()">Create Element</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>List Operations:</label>
+                        <input type="text" id="list-item-text" placeholder="List item text">
+                        <button class="btn btn-primary" onclick="addListItem()">Add List Item</button>
+                        <button class="btn btn-danger" onclick="removeLastItem()">Remove Last</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Bulk Operations:</label>
+                        <input type="number" id="bulk-count" placeholder="Number of items" value="5" min="1" max="50">
+                        <button class="btn btn-warning" onclick="createBulkItems()">Create Multiple</button>
+                        <button class="btn btn-danger" onclick="clearAllItems()">Clear All</button>
+                    </div>
+                </div>
+                <div>
+                    <div class="form-group">
+                        <label>Clone Operations:</label>
+                        <button class="btn btn-primary" onclick="cloneFirstItem()">Clone First Item</button>
+                        <button class="btn btn-success" onclick="createFromTemplate()">Use Template</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="list-container"></div>
+        </div>
+
+        <!-- Section 4: Interactive Form Demo -->
+        <div class="section">
+            <h2>4. Interactive Form Validation</h2>
+            
+            <div class="demo-area">
+                <form id="demo-form">
+                    <div class="grid">
+                        <div class="form-group">
+                            <label for="username">Username (min 3 chars):</label>
+                            <input type="text" id="username" name="username" required>
+                            <small id="username-error" style="color: red; display: none;"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                            <small id="email-error" style="color: red; display: none;"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password (min 6 chars):</label>
+                            <input type="password" id="password" name="password" required>
+                            <small id="password-error" style="color: red; display: none;"></small>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country:</label>
+                            <select id="country" name="country" required>
+                                <option value="">Select country</option>
+                                <option value="us">United States</option>
+                                <option value="uk">United Kingdom</option>
+                                <option value="ca">Canada</option>
+                                <option value="in">India</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" id="submit-btn" class="btn btn-success" disabled>Submit Form</button>
+                    <button type="button" class="btn btn-warning" onclick="resetForm()">Reset</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Template for cloning -->
+        <template id="item-template">
+            <div class="list-item">
+                <span class="item-text">Template Item</span>
+                <button class="remove-btn" onclick="removeItem(this)">×</button>
+            </div>
+        </template>
+    </div>
+
+    <script>
+        // Global variables
+        let itemCounter = 0;
+        let outputElement;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            outputElement = document.getElementById('output');
+            setupFormValidation();
+            log('DOM Manipulation Demo Ready! 🎉');
+        });
+
+        // Utility function for logging
+        function log(message) {
+            if (outputElement) {
+                outputElement.textContent += `${new Date().toLocaleTimeString()}: ${message}\n`;
+                outputElement.scrollTop = outputElement.scrollHeight;
+            }
+        }
+
+        function clearOutput() {
+            if (outputElement) {
+                outputElement.textContent = '';
+            }
+        }
+
+        // Section 1: Selection Demonstrations
+        function demonstrateSelection() {
+            log('\n=== SELECTION METHODS DEMO ===');
+            
+            // getElementById
+            const uniqueElement = document.getElementById('unique-element');
+            log(`getElementById: Found element with text: "${uniqueElement.textContent}"`);
+            
+            // getElementsByClassName
+            const elementsByClass = document.getElementsByClassName('sample-element');
+            log(`getElementsByClassName: Found ${elementsByClass.length} elements`);
+            
+            // getElementsByTagName
+            const paragraphs = document.getElementsByTagName('p');
+            log(`getElementsByTagName('p'): Found ${paragraphs.length} paragraphs`);
+            
+            // querySelector
+            const specialElement = document.querySelector('.special');
+            log(`querySelector('.special'): Found "${specialElement.textContent}"`);
+            
+            // querySelectorAll
+            const allSamples = document.querySelectorAll('.sample-element');
+            log(`querySelectorAll('.sample-element'): Found ${allSamples.length} elements`);
+            
+            // Advanced selector
+            const dataElement = document.querySelector('[data-value="123"]');
+            log(`querySelector('[data-value="123"]'): Found element with data-value="${dataElement.dataset.value}"`);
+            
+            // Highlight found elements temporarily
+            allSamples.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.background = '#ffeb3b';
+                    setTimeout(() => {
+                        element.style.background = '';
+                    }, 1000);
+                }, index * 200);
+            });
+        }
+
+        // Section 2: Content and Attribute Manipulation
+        function changeTitle() {
+            const newTitle = document.getElementById('new-title').value;
+            const titleElement = document.getElementById('demo-title');
+            
+            if (newTitle.trim()) {
+                titleElement.textContent = newTitle;
+                log(`Title changed to: "${newTitle}"`);
+                document.getElementById('new-title').value = '';
+            }
+        }
+
+        function changeContent() {
+            const newContent = document.getElementById('new-content').value;
+            const contentElement = document.getElementById('demo-content');
+            
+            if (newContent.trim()) {
+                contentElement.innerHTML = newContent;
+                log(`Content updated with HTML: "${newContent}"`);
+                document.getElementById('new-content').value = '';
+            }
+        }
+
+        function changeImage() {
+            const newSrc = document.getElementById('new-image-src').value;
+            const imageElement = document.getElementById('demo-image');
+            
+            if (newSrc.trim()) {
+                imageElement.src = newSrc;
+                imageElement.alt = 'User provided image';
+                log(`Image source changed to: "${newSrc}"`);
+                document.getElementById('new-image-src').value = '';
+            }
+        }
+
+        function toggleHighlight() {
+            const contentDemo = document.getElementById('content-demo');
+            contentDemo.classList.toggle('highlight');
+            
+            const hasHighlight = contentDemo.classList.contains('highlight');
+            log(`Highlight ${hasHighlight ? 'added' : 'removed'}`);
+        }
+
+        function addErrorClass() {
+            const input = document.getElementById('demo-input');
+            input.classList.add('error');
+            log('Error class added to input');
+            
+            setTimeout(() => {
+                input.classList.remove('error');
+                log('Error class removed from input');
+            }, 2000);
+        }
+
+        // Section 3: Creating and Removing Elements
+        function createElement() {
+            const elementType = document.getElementById('element-type').value;
+            const elementText = document.getElementById('element-text').value;
+            const container = document.getElementById('dynamic-content');
+            
+            const newElement = document.createElement(elementType);
+            
+            if (elementType === 'input') {
+                newElement.placeholder = elementText || 'Dynamic input';
+                newElement.type = 'text';
+            } else if (elementType === 'button') {
+                newElement.textContent = elementText || 'Dynamic Button';
+                newElement.className = 'btn btn-primary';
+                newElement.onclick = function() {
+                    alert('Dynamic button clicked!');
+                };
+            } else {
+                newElement.textContent = elementText || `Dynamic ${elementType}`;
+            }
+            
+            newElement.style.margin = '10px 0';
+            newElement.style.padding = '10px';
+            newElement.style.border = '1px solid #ddd';
+            newElement.style.borderRadius = '4px';
+            
+            container.appendChild(newElement);
+            log(`Created ${elementType} element with content: "${elementText}"`);
+            
+            document.getElementById('element-text').value = '';
+        }
+
+        function addListItem() {
+            const text = document.getElementById('list-item-text').value;
+            const container = document.getElementById('list-container');
+            
+            if (text.trim()) {
+                const listItem = document.createElement('div');
+                listItem.className = 'list-item';
+                listItem.innerHTML = `
+                    <span class="item-text">${text}</span>
+                    <button class="remove-btn" onclick="removeItem(this)">×</button>
+                `;
+                
+                container.appendChild(listItem);
+                itemCounter++;
+                log(`Added list item: "${text}"`);
+                document.getElementById('list-item-text').value = '';
+            }
+        }
+
+        function removeLastItem() {
+            const container = document.getElementById('list-container');
+            const lastItem = container.lastElementChild;
+            
+            if (lastItem) {
+                const text = lastItem.querySelector('.item-text').textContent;
+                lastItem.remove();
+                log(`Removed last item: "${text}"`);
+                itemCounter--;
+            }
+        }
+
+        function removeItem(button) {
+            const listItem = button.parentNode;
+            const text = listItem.querySelector('.item-text').textContent;
+            listItem.classList.add('deleting');
+            
+            setTimeout(() => {
+                listItem.remove();
+                log(`Removed item: "${text}"`);
+                itemCounter--;
+            }, 300);
+        }
+
+        function createBulkItems() {
+            const count = parseInt(document.getElementById('bulk-count').value) || 5;
+            const container = document.getElementById('list-container');
+            const fragment = document.createDocumentFragment();
+            
+            for (let i = 1; i <= count; i++) {
+                const listItem = document.createElement('div');
+                listItem.className = 'list-item';
+                listItem.innerHTML = `
+                    <span class="item-text">Bulk Item ${itemCounter + i}</span>
+                    <button class="remove-btn" onclick="removeItem(this)">×</button>
+                `;
+                fragment.appendChild(listItem);
+            }
+            
+            container.appendChild(fragment);
+            itemCounter += count;
+            log(`Created ${count} items using DocumentFragment`);
+        }
+
+        function clearAllItems() {
+            const container = document.getElementById('list-container');
+            const items = container.querySelectorAll('.list-item');
+            
+            items.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('deleting');
+                    setTimeout(() => item.remove(), 300);
+                }, index * 100);
+            });
+            
+            setTimeout(() => {
+                itemCounter = 0;
+                log('All items cleared');
+            }, items.length * 100 + 300);
+        }
+
+        function cloneFirstItem() {
+            const container = document.getElementById('list-container');
+            const firstItem = container.querySelector('.list-item');
+            
+            if (firstItem) {
+                const clone = firstItem.cloneNode(true);
+                const textSpan = clone.querySelector('.item-text');
+                textSpan.textContent = textSpan.textContent + ' (Clone)';
+                
+                container.appendChild(clone);
+                itemCounter++;
+                log('Cloned first item');
+            } else {
+                log('No items to clone');
+            }
+        }
+
+        function createFromTemplate() {
+            const template = document.getElementById('item-template');
+            const container = document.getElementById('list-container');
+            
+            const clone = template.content.cloneNode(true);
+            const textSpan = clone.querySelector('.item-text');
+            textSpan.textContent = `Template Item ${itemCounter + 1}`;
+            
+            container.appendChild(clone);
+            itemCounter++;
+            log('Created item from template');
+        }
+
+        // Section 4: Form Validation
+        function setupFormValidation() {
+            const form = document.getElementById('demo-form');
+            const usernameInput = document.getElementById('username');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const countrySelect = document.getElementById('country');
+            const submitBtn = document.getElementById('submit-btn');
+
+            function validateUsername() {
+                const value = usernameInput.value;
+                const errorElement = document.getElementById('username-error');
+                
+                if (value.length < 3) {
+                    usernameInput.classList.add('error');
+                    usernameInput.classList.remove('valid');
+                    errorElement.textContent = 'Username must be at least 3 characters';
+                    errorElement.style.display = 'block';
+                    return false;
+                } else {
+                    usernameInput.classList.remove('error');
+                    usernameInput.classList.add('valid');
+                    errorElement.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validateEmail() {
+                const value = emailInput.value;
+                const errorElement = document.getElementById('email-error');
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (!emailRegex.test(value)) {
+                    emailInput.classList.add('error');
+                    emailInput.classList.remove('valid');
+                    errorElement.textContent = 'Please enter a valid email address';
+                    errorElement.style.display = 'block';
+                    return false;
+                } else {
+                    emailInput.classList.remove('error');
+                    emailInput.classList.add('valid');
+                    errorElement.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validatePassword() {
+                const value = passwordInput.value;
+                const errorElement = document.getElementById('password-error');
+                
+                if (value.length < 6) {
+                    passwordInput.classList.add('error');
+                    passwordInput.classList.remove('valid');
+                    errorElement.textContent = 'Password must be at least 6 characters';
+                    errorElement.style.display = 'block';
+                    return false;
+                } else {
+                    passwordInput.classList.remove('error');
+                    passwordInput.classList.add('valid');
+                    errorElement.style.display = 'none';
+                    return true;
+                }
+            }
+
+            function validateCountry() {
+                return countrySelect.value !== '';
+            }
+
+            function updateSubmitButton() {
+                const isUsernameValid = validateUsername();
+                const isEmailValid = validateEmail();
+                const isPasswordValid = validatePassword();
+                const isCountryValid = validateCountry();
+                
+                if (isUsernameValid && isEmailValid && isPasswordValid && isCountryValid) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Form';
+                    submitBtn.classList.add('btn-success');
+                    submitBtn.classList.remove('btn-danger');
+                } else {
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Please complete form';
+                    submitBtn.classList.remove('btn-success');
+                    submitBtn.classList.add('btn-danger');
+                }
+            }
+
+            // Add event listeners
+            usernameInput.addEventListener('input', updateSubmitButton);
+            emailInput.addEventListener('input', updateSubmitButton);
+            passwordInput.addEventListener('input', updateSubmitButton);
+            countrySelect.addEventListener('change', updateSubmitButton);
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                log('Form submitted successfully! ✅');
+                alert('Form would be submitted now!');
+            });
+
+            // Initial validation
+            updateSubmitButton();
+        }
+
+        function resetForm() {
+            const form = document.getElementById('demo-form');
+            form.reset();
+            
+            // Remove validation classes
+            const inputs = form.querySelectorAll('input, select');
+            inputs.forEach(input => {
+                input.classList.remove('error', 'valid');
+            });
+            
+            // Hide error messages
+            const errors = form.querySelectorAll('small');
+            errors.forEach(error => {
+                error.style.display = 'none';
+            });
+            
+            // Update submit button
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Please complete form';
+            submitBtn.classList.remove('btn-success');
+            submitBtn.classList.add('btn-danger');
+            
+            log('Form reset');
+        }
+    </script>
+</body>
+</html>
