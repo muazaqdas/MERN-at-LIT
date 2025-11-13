@@ -16,6 +16,9 @@ export default function Navbar() {
         <li>
           <Link to={'/resizewindow'}>Resize Window</Link>
         </li>
+        <li>
+          <Link to={'/productlist'}>Product List</Link>
+        </li>
     </div>
   )
 }

@@ -6,6 +6,8 @@ import Product from './Product';
 
 import TodoList from './TodoList'
 import Navbar from './Navbar';
+import { Link } from 'react-router';
+import Container from './Container';
 
 function App() {
   
@@ -45,10 +47,15 @@ function App() {
     <>
        {/* 11 Nov */}
         {/* <Name/> */}
-        <Navbar/>
+        <div style={{display:"flex", gap:"12px", justifyContent:"space-around", alignItems:"center"}}>
+          <Product title="Football" descrp="This is an amazing football" price={3000} />
+          <Product title="Basketball" descrp="ofboibnwefjojefn" price={2500} />
+          <Product title="Bat" descrp="This is a bat" price={1000} />
+        </div>
+        <Container name={"Muaz"} color={"red"} children={"Hello"}>
+          <p>Hello There</p>
+        </Container>
         <button onClick={() => setCount(count + 1)}>+1</button>
-        
-
     </>
   )
 }

@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
+import { useParams } from 'react-router';
 
 
-const  Product = (props) => {
-  
+const  Product = ({title, descrp, price}) => {
+  const { id } = useParams();
+  console.log("product params:", id
+    
+  )
   const [quant, setQuant]  =  useState(0);
 
   const handleIncrement = ()=>{
@@ -13,10 +17,11 @@ const  Product = (props) => {
   } 
 
   return (
-    <div>
-      <h2>{props.title}</h2>
-      <h2>{props.descrp}</h2>
-      <h2>{props.price}</h2>
+    <div style={{background:"teal"}}>
+      <h2>{title}</h2>
+      <h2>{id}</h2>
+      <h2>{descrp}</h2>
+      <h2>{price}</h2>
       <button onClick={handleDecrement}> - </button>
       <h3>{quant}</h3>
       <button onClick={handleIncrement}> + </button>

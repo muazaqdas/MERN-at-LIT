@@ -20,7 +20,6 @@ export default function ResizeWindow() {
 
   return (
     <div>
-        <Navbar/>
         <h3>Fear not when I am Here HAHAHAHAHA....</h3>
         <p>Window width: {width}px</p>
     </div>

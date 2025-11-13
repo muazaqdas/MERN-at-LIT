@@ -53,7 +53,6 @@ const TodoList = ()=>{
 
     return(
         <>
-            <Navbar/>
             <div style={{display:'flex', flexDirection:'column', gap:"12px", width:"80vw"}}>
                 {/* Add Todos/Tasks */}
                 <div style={{display:"flex",  gap:"12px", justifyContent:'space-between', alignItems:'center', width:'100%'}}>
