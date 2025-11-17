@@ -1,6 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, createBrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Route, Routes } from "react-router";
 import './index.css'
 import App from './App.jsx'
 import Counter from './Counter.jsx';
