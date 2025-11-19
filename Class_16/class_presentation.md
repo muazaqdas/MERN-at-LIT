@@ -894,7 +894,7 @@ MVC (Model-View-Controller) is a software design pattern that separates applicat
 **Project Structure:**
 
 ```
-my-api/
+src/
 ├── models/
 │   └── book.model.js
 ├── controllers/
